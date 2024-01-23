@@ -42,10 +42,12 @@ class FrontController extends Controller
     public function game(Request $request,$id)
     {
         $address=Session::get("address");
+        $lotto=LottoFixture::find($id);
         $data = LottoFixtureItem::query()->where(['lotto_fixture_id'=>$id])->get();
         return view('game', [
             "fixtures" => $data,
-            "address"=>$address
+            "address"=>$address,
+            "lotto"=>$lotto
         ]);
 
     }

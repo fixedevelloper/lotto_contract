@@ -12,6 +12,9 @@ use Carbon\Carbon;
 
 class Helpers
 {
+    static function leftTime($date){
+
+    }
     static function odd($fixture_id)
     {
         $odd = Odd::query()->firstWhere(['fixture_id' => $fixture_id]);

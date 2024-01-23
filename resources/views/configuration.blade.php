@@ -1,6 +1,9 @@
 @extends('base')
 @section('title') Conbinaison @endsection
 @section('content')
+    <div class="container">
+        <h3 class="mt-3 text-white">Configuration des grilles de matchs</h3>
+    </div>
     <div class="row">
         <div class="col-md-8 mt-5">
             <div class="card card_dark">
@@ -21,7 +24,7 @@
                            $team_away=\App\Helpers\Helpers::getTeamByID($fixture->team_away_id);
                            @endphp
                            <tr>
-                               <td><span>{{$fixture->fixture_id}}</span>{{date("Y-m-d h:i",$fixture->timestamp)}}</td>
+                               <td><span hidden>{{$fixture->fixture_id}}</span>{{date("Y-m-d h:i",$fixture->timestamp)}}</td>
                                <td><img height="20"
                                         src=" {{$team_home['logo']}}"> {{$team_home['name']}}</td>
                                <td><img height="20"
@@ -82,15 +85,11 @@
                 ob: jsonObj, title: $('#title').val(),
                 end_time: $('#end_time').val(), end_date: $('#end_date').val()}),
                 success: function (data) {
-                    setTimeout(function () {
-                        $("#overlay").fadeOut(300);
-                    }, 500);
+                    toastr.success('Operation executed successfully', 'Success')
                 },
                 error: function (err) {
-                    alert("An error ocurred while loading data ...");
-                    setTimeout(function () {
-                        $("#overlay").fadeOut(300);
-                    }, 500);
+                    toastr.error('An error has occurred' + JSON.stringify((err)),'Error')
+
                 }
             });
 

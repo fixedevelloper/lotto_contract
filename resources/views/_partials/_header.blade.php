@@ -9,21 +9,8 @@
                     </a>
                 </div>
                 <div class="lang d-flex align-items-center px-2">
-                    <div class="language__wrap">
-                        <div class="flag">
-                            <img src="{{asset('img/header/uk.png')}}" alt="flag">
-                        </div>
-                        <select name="flag" id="flag-img1">
-                            <option value="1">
-                                En
-                            </option>
-                            <option value="1">
-                                Cy
-                            </option>
-                            <option value="1">
-                                Et
-                            </option>
-                        </select>
+                    <div class=" d-lg-none mr-1">
+                        <w3m-core-button></w3m-core-button>
                     </div>
                     <div class="header-bar d-lg-none">
                         <span></span>

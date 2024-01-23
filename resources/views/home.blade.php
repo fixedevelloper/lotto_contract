@@ -90,14 +90,13 @@
                         <ol style="--length: {{sizeof($lotto_fixtures)}}" role="list">
                         @foreach($lotto_fixtures as $lotto_fixture)
 
-                                <a href="{{route('game',["id"=>$lotto_fixture->id])}}"> <li style="--i: {{$loop->index}}">
+                                <a href="{{route('game',["id"=>$lotto_fixture->id])}}">
+                                    <li style="--i: {{$loop->index}}">
                                     <h3>{{$lotto_fixture->title}}</h3>
-                                    <p>Termine: {{$lotto_fixture->end_time}}</p>
+                                    <p class="text-black-50">Fin de validation : {{$lotto_fixture->end_time}}</p>
                                     </li>
                                 </a>
-{{--
-                        <li><a href="{{route('game',["id"=>$lotto_fixture->id])}}">{{$lotto_fixture->title}} </a></li>--}}
-                        @endforeach
+                            @endforeach
                         </ol>
 
                  {{--   <div class="height__table">
