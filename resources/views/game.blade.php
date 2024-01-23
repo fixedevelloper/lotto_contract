@@ -8,7 +8,7 @@
        <h2 class="text-white text-center">Lotto N°{{$lotto->id}}</h2>
 
                 <h2 class="text-white text-center text-uppercase">{{$lotto->title}}</h2>
-                <h6>Fin de validation : <span>{{ Carbon\Carbon::parse($lotto->end_time,new DateTimeZone("Africa/Brazzaville"))->format('Y/m/d h:i:s') }}</span></h6>
+                <h6>Fin de validation : <span>{{$lotto->end_time }}</span></h6>
                 {{--<h6>Fin de validation dans : <span  class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($lotto->end_time)->format('Y/m/d h:i:s') }}"></span></h6>--}}
             </div>
         </div>
