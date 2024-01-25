@@ -46,10 +46,8 @@ export const web3Modal = new Web3Modal(
 );
 const account = getAccount()
 console.log("************************************")
-statusRegister(account)
+//statusRegister(account)
 function statusRegister(account){
-    var user = document.getElementById("user_id");
-    user.innerText=account.address;
     if (account.isConnected){
         var userID = document.getElementById("newuserID");
         var element = document.getElementById("wallet_connect");

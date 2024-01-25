@@ -27,15 +27,17 @@
                 </ul>
             </div>
             <div class="mneu-btn-grp">
-
-                <a href="{{route("login")}}" class="cmn--btn">
+                @if(is_null(\Illuminate\Support\Facades\Session::get("address_connect")))
+                <a href="javascript:void(0);" onclick="lotto.login()" id="login_id" class="cmn--btn">
                     <span>Sign In</span>
                 </a>
-                @if(is_null(! \Illuminate\Support\Facades\Session::get("user")))
+                @endif
+                @if(is_null(\Illuminate\Support\Facades\Session::get("address_connect")))
                 <a href="{{route("nextregister")}}" class="cmn--btn2">
                     <span class="rela">Sign Up</span>
                 </a>
-                @endif<w3m-core-button></w3m-core-button>
+                @endif
+                <w3m-core-button></w3m-core-button>
 
             </div>
         </div>

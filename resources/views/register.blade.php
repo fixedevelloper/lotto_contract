@@ -31,5 +31,5 @@
 
 @endsection
 @push('script')
-    <script src="{{ asset('contract/lotterie.js') }}"></script>
+
 @endpush

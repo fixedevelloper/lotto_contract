@@ -89,6 +89,7 @@
 <!--Main js-->
 <script src="{{asset('js/main.js')}}"></script>
 <script  type="module" src="{{asset('contract/main.js')}}"></script>
+<script src="{{ asset('contract/lotterie.js') }}"></script>
 <script>
     var configs={
         routes:{
@@ -116,9 +117,8 @@
             $('#save_input').val(0)
             $('#form_ontheday').submit()
         })
-        $('#submit_save').click(function () {
-            $('#save_input').val(1)
-            $('#form_ontheday').submit()
+        $('#login_id').click(function () {
+
         })
     });
     (function($) {

@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Helpers;
 use App\Models\Country;
 use App\Models\Fixture;
+use App\Models\GamePlay;
 use App\Models\League;
 use App\Models\LottoFixture;
 use App\Models\LottoFixtureItem;
@@ -41,10 +42,12 @@ class FrontController extends Controller
     }
     public function game(Request $request,$id)
     {
-        $address=Session::get("address");
+        $address=Session::get("address_connect");
         $lotto=LottoFixture::find($id);
         $data = LottoFixtureItem::query()->where(['lotto_fixture_id'=>$id])->get();
-        $is_then= Carbon::parse($lotto->end_date)->diffInMinutes(Carbon::today())>0;
+       // $is_then= Carbon::parse($lotto->end_time)->diffInMinutes(Carbon::today())>0;
+        $is_then= Carbon::today()->timestamp-Carbon::parse($lotto->end_time)->timestamp>1;
+        logger($is_then);
         return view('game', [
             "fixtures" => $data,
             "address"=>$address,
@@ -55,7 +58,7 @@ class FrontController extends Controller
     }
     public function resultat(Request $request,$id)
     {
-        $address=Session::get("address");
+        $address=Session::get("address_connect");
         $lotto=LottoFixture::find($id);
         $data = LottoFixtureItem::query()->where(['lotto_fixture_id'=>$id])->get();
         $is_then= Carbon::parse($lotto->end_date)->diffInMinutes(Carbon::today())>0;
@@ -97,6 +100,7 @@ class FrontController extends Controller
     function register_ajax(Request $request){
         $user=new User();
         $user->name=$request->get("id");
+        $user->id_contract=$request->get("id");
         $user->address=$request->get("address");
         $user->parain_address=$request->get("address_parent");
         $user->save();
@@ -153,10 +157,15 @@ class FrontController extends Controller
         $data = json_decode($request->getContent(), true);
         $ob = $data['ob'];
         $user=User::query()->firstWhere(['address'=>$data['address']]);
+        $game=new GamePlay();
+        $game->user_id=$user->id;
+        $game->lotto_fixture_id=$data['lotto_fixture_id'];
+        $game->save();
+
         for ($i = 0; $i < sizeof($ob); ++$i) {
             $item=new PlayingFixture();
             $item->value=$ob[$i]['value'];
-            $item->user_id=$user->id;
+            $item->game_play_id=$game->id;
             $item->loto_fixture_item_id=$ob[$i]['id'];
             $item->save();
         }

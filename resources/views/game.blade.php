@@ -2,10 +2,12 @@
 @section('title')  @endsection
 @section('content')
     <span id="address" hidden>{{$address}}</span>
+    <span id="lotto_fixture_id" hidden>{{$lotto->id}}</span>
     <div class="row mt-3">
         <div class="card card_dark text-white">
-            <div class="card-body text-center">
-       <h2 class="text-white text-center">Lotto N°{{$lotto->id}}    @if($is_then)
+            <div class="card-body text-center">{{$is_then}}
+       <h2 class="text-white text-center">Lotto N°{{$lotto->id}}
+           @if($is_then)
                <span class="text-danger text-opacity-100">Fermé</span>
            @endif</h2>
 
@@ -99,7 +101,7 @@
     </div>
 @endsection
 @push("script")
-    <script src="{{asset('js/jquery.countdown.min.js')}}"></script>
+{{--    <script src="{{asset('js/jquery.countdown.min.js')}}"></script>
     <script>
         ;(function($) {
 
@@ -131,7 +133,7 @@
             }
 
         })(window.Zepto || window.jQuery, window, document);
-    </script>
+    </script>--}}
     <script>
 
         $("#send_conbinaison").click(function () {
@@ -161,9 +163,10 @@
                 type: "POST",
                 dataType: "JSON",
                 data: JSON.stringify({
-                    ob: jsonObj, address: $('#address').text()}),
+                    ob: jsonObj, address: $('#address').text(),lotto_fixture_id:$('#lotto_fixture_id').text()}),
                 success: function (data) {
                     toastr.success('Operation executed successfully', 'Success')
+                    window.location.reload()
                 },
                 error: function (err) {
                     toastr.error('An error has occurred' + JSON.stringify((err)),'Error')

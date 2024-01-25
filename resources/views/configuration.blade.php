@@ -24,7 +24,7 @@
                            $team_away=\App\Helpers\Helpers::getTeamByID($fixture->team_away_id);
                            @endphp
                            <tr>
-                               <td><span hidden>{{$fixture->fixture_id}}</span>{{date("Y-m-d h:i",$fixture->timestamp)}}</td>
+                               <td><span hidden>{{$fixture->fixture_id}}</span>{{\Illuminate\Support\Carbon::parse($fixture->date)}}{{--{{date("Y-m-d h:i T EST",$fixture->timestamp)}}--}}</td>
                                <td><img height="20"
                                         src=" {{$team_home['logo']}}"> {{$team_home['name']}}</td>
                                <td><img height="20"
