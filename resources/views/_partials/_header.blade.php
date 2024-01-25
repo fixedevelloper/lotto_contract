@@ -48,7 +48,7 @@
             @if(!is_null(\Illuminate\Support\Facades\Session::get("address_connect")))
                 <div class="dashboar__wrap">
                     <div class="items dashboar__social">
-                        <w3m-core-button></w3m-core-button>
+                        {{--<w3m-core-button></w3m-core-button>--}}
                        {{-- <div class="items d__cmn">
                             <w3m-core-button></w3m-core-button>
                         </div>--}}
