@@ -8,6 +8,7 @@
                         <img src="{{asset('images/logo.png')}}" alt="logo">
                     </a>
                 </div>
+
          {{--       <div class="lang d-flex align-items-center px-2">
                     <div class=" d-lg-none mr-1">
 
@@ -40,6 +41,9 @@
                         @endif
 
                 </ul>
+            </div>
+            <div class="d-flex d-lg-block d-md-block d-sm-none">
+            <w3m-core-button></w3m-core-button>
             </div>
             @if(!is_null(\Illuminate\Support\Facades\Session::get("address_connect")))
                 <div class="dashboar__wrap">
