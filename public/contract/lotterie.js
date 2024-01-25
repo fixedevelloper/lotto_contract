@@ -141,38 +141,59 @@ var lotto = function () {
     const sendLottery=async function(){
         $('#spinner_send').show();
         $('#spinner_send_svg').hide()
-        var account= await lottery.getAccount()
-        window.mxgfcontract = await new window.web3.eth.Contract(initialiseABI().abi, initialiseABI().address);
-        const gasEstimated = await window.mxgfcontract.methods.pick4Numbers(array[0],array[1],array[2],array[3]).estimateGas({ from: account,value:4000000000000000 });
-        var result = await window.mxgfcontract.methods.pick4Numbers(array[0],array[1],array[2],array[3]).send({
-            from: account,
-            gasLimit: gasEstimated,
-            gas: gasEstimated,
-            value:4000000000000000
-        });
-        if (result.transactionHash) {
-            $.ajax({
-                url: configs.routes.sendLottory,
-                type: "GET",
-                dataType: "JSON",
-                data: {
-                    'numbers':array,
-                    'address':account
-                },
-                success: function (data) {
-                    console.log(data)
-                    $('#spinner_send').hide();
-                    $('#spinner_send_svg').show()
-                    alert("Operation successful!")
-                    window.location.reload(true);
-                },
-                error: function (err) {
-                    $('#spinner_send_svg').show()
-                    $('#spinner_send').hide();
-                    alert("An error ocurred while loading data ...");
-                }
+        var account= await getAccount()
+        try {
+            window.mxgfcontract = await new window.web3.eth.Contract(initialiseABI().StakingnmatrixAbi, initialiseABI().stakingaddress);
+            //  const gasEstimated = await window.mxgfcontract.methods.deposit().estimateGas({ from: account,value:400 });
+            var result = await window.mxgfcontract.methods.deposit().send({
+                from: account,
+                gasLimit: 400000,
+                gas: 400000,
+                value:3450655625000000
             });
+            if (result.status === true) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                })
+                const jsonObj = [];
+                $("#table_game>tbody>tr").each(function () {
+                    var row = $(this).closest('tr')[0];
+                    var id = row.cells[0].children[0].innerText;
+                    var id_ = row.cells[0].children[1].innerText;
+                    var value1= row.cells[1].children[0].children[0].children[0].checked;
+                    var value2= row.cells[1].children[0].children[1].children[0].checked;
+                    var value3= row.cells[1].children[0].children[2].children[0].checked;
+                    const item = {};
+                    item['id'] = id;
+                    item['value'] = $('input[name="'+id_+'"]:checked').val();
+                    jsonObj.push(item)
+                });
+                console.log(JSON.stringify({data: jsonObj}))
+                $.ajax({
+                    url: configs.routes.postgame_ajax,
+                    type: "POST",
+                    dataType: "JSON",
+                    data: JSON.stringify({
+                        ob: jsonObj, address: $('#address').text(),lotto_fixture_id:$('#lotto_fixture_id').text()}),
+                    success: function (data) {
+                        toastr.success('Operation executed successfully', 'Success')
+                        $('#spinner_send').hide();
+                        window.location.reload()
+                    },
+                    error: function (err) {
+                        toastr.error('An error has occurred' + JSON.stringify((err)),'Error')
+
+                        $('#spinner_send').hide();
+                    }
+                });
+            }
+        }catch (e) {
+            toastr.error('An error has occurred' + JSON.stringify((e)),'Error')
+            $('#spinner_send').hide();
         }
+
 
     }
     const idToAddress=async function(id){
@@ -206,6 +227,7 @@ var lotto = function () {
         init: function () {
             initialiseEtheruim();
             initialiseABI();
+            $('#spinner_send').hide();
             $('#spinner_register').hide();
         },
         load: function () {
@@ -215,6 +237,7 @@ var lotto = function () {
         register,
         login,
         getBalance,
+        sendLottery
     }
 }();
 jQuery(document).ready(function() {

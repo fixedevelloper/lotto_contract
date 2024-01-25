@@ -96,6 +96,7 @@
             index: "{{\Illuminate\Support\Facades\URL::to('/')}}",
             home: "{{\Illuminate\Support\Facades\URL::route('home')}}",
             register_ajax: "{{\Illuminate\Support\Facades\URL::route('register_ajax')}}",
+            postgame_ajax: "{{\Illuminate\Support\Facades\URL::route('postGame')}}",
             login_next: "{{\Illuminate\Support\Facades\URL::route('login_next')}}",
             check_register: "{{\Illuminate\Support\Facades\URL::route('check_register')}}",
         }
