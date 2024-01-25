@@ -5,15 +5,14 @@
     <div class="row mt-3">
         <div class="card card_dark text-white">
             <div class="card-body text-center">
-       <h2 class="text-white text-center">Lotto N°{{$lotto->id}}    @if($is_then)
+       <h2 class="text-white text-center">Resultat Lotto N°{{$lotto->id}}
+           @if($is_then)
                <span class="text-danger text-opacity-100">Fermé</span>
            @endif</h2>
 
                 <h2 class="text-white text-center text-uppercase">{{$lotto->title}}</h2>
                 <h6>Fin de validation : <span>{{$lotto->end_time }}</span></h6>
-
-                {{--<h6>Fin de validation dans : <span  class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($lotto->end_time)->format('Y/m/d h:i:s') }}"></span></h6>--}}
-            </div>
+           </div>
         </div>
 </div>
     <div class="row justify-content-center">
@@ -22,66 +21,6 @@
                 <div class="card-body">
                     <div class="height__table">
                         <div class="main__table">
-                            {{--<div class="table__wrap">
-                                @foreach($fixtures as $item)
-                                    @php
-                                    $fixture=\App\Helpers\Helpers::getFixture($item->fixture_id);
-
-                                     $team_home=\App\Helpers\Helpers::getTeamByID($fixture->team_home_id);
-                                     $team_away=\App\Helpers\Helpers::getTeamByID($fixture->team_away_id);
-                                    @endphp
-                            <div class="table__items b__bottom">
-                                <span hidden>{{$item->id}}</span>
-                                <div class="t__items">
-
-                                    <div class="t__items__left text-end">
-                                        <h6>
-                                            <img height="40"
-                                                 src="{{$team_home['logo']}}">
-                                            {{$team_home['name']}}
-                                        </h6>
-                                    </div>
-
-                                </div>
-                                <div class="mart__point__items">
-                                    <a href="javascript:void(0);" class="point__box">
-                                        <input type="checkbox" name="fixure" value="1" id="check1{{$item->id}}">
-                                        <label for="check1{{$item->id}}">
-                                            <span class="break">1</span>
-                                            <div><i class="fa fa-check"></i></div>
-                                        </label>
-
-                                    </a>
-                                    <a href="javascript:void(0);" class="point__box">
-                                        <input type="checkbox" name="fixure" value="3" id="check3{{$item->id}}">
-                                        <label for="check3{{$item->id}}">
-                                            <span class="break">x</span>
-                                            <div>   <i class="fa fa-check"></i></div>
-                                        </label>
-
-                                    </a>
-                                    <a href="javascript:void(0);" class="point__box">
-                                        <input type="checkbox" name="fixure" value="2" id="check2{{$item->id}}">
-                                        <label for="check2{{$item->id}}">
-                                            <span class="break">2</span>
-                                            <div><i class="fa fa-check"></i></div>
-                                        </label>
-
-                                    </a>
-                                </div>
-                                <div class="t__items">
-                                    <div class="t__items__left">
-                                        <h6>
-                                            <img height="40"
-                                                 src="{{$team_away['logo']}}">
-                                            {{$team_away['name']}}
-                                        </h6>
-                                    </div>
-
-                                </div>
-                            </div>
-                                @endforeach
-                            </div>--}}
                             <div class="table-responsive">
                                 <table class="table table__wrap text-white" id="table_game">
                                     <tbody>
@@ -105,12 +44,11 @@
                                             <td width="40%">
                                                 <div class="mart__point__items">
                                                     <a href="javascript:void(0);" class="point__box">
-                                                        <input type="radio" name="{{$fixture->fixture_id}}" value="1" id="check1{{$item->id}}">
+                                                        <input type="radio" @if($fixture->) name="{{$fixture->fixture_id}}" value="1" id="check1{{$item->id}}">
                                                         <label for="check1{{$item->id}}">
                                                             <span class="break">1</span>
                                                             <div><i class="fa fa-check"></i></div>
                                                         </label>
-
                                                     </a>
                                                     <a href="javascript:void(0);" class="point__box">
                                                         <input type="radio" name="{{$fixture->fixture_id}}" value="3" id="check3{{$item->id}}">

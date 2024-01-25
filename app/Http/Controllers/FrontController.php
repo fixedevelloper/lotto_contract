@@ -44,10 +44,26 @@ class FrontController extends Controller
         $address=Session::get("address");
         $lotto=LottoFixture::find($id);
         $data = LottoFixtureItem::query()->where(['lotto_fixture_id'=>$id])->get();
+        $is_then= Carbon::parse($lotto->end_date)->diffInMinutes(Carbon::today())>0;
         return view('game', [
             "fixtures" => $data,
             "address"=>$address,
-            "lotto"=>$lotto
+            "lotto"=>$lotto,
+            "is_then"=>$is_then
+        ]);
+
+    }
+    public function resultat(Request $request,$id)
+    {
+        $address=Session::get("address");
+        $lotto=LottoFixture::find($id);
+        $data = LottoFixtureItem::query()->where(['lotto_fixture_id'=>$id])->get();
+        $is_then= Carbon::parse($lotto->end_date)->diffInMinutes(Carbon::today())>0;
+        return view('resultat', [
+            "fixtures" => $data,
+            "address"=>$address,
+            "lotto"=>$lotto,
+            "is_then"=>$is_then
         ]);
 
     }
