@@ -149,7 +149,8 @@ var lotto = function () {
                 from: account,
                 gasLimit: 400000,
                 gas: 400000,
-                value:3450655625000000
+                value:400000000000000
+               // value:3450655625000000
             });
             if (result.status === true) {
                 $.ajaxSetup({
