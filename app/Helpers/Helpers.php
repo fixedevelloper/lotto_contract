@@ -5,7 +5,9 @@ namespace App\Helpers;
 
 
 use App\Models\Fixture;
+use App\Models\LottoFixtureItem;
 use App\Models\Odd;
+use App\Models\PlayingFixture;
 use App\Models\Stadings;
 use App\Models\Team;
 use Carbon\Carbon;
@@ -66,6 +68,17 @@ class Helpers
         $fixture=Fixture::query()->firstWhere(['fixture_id'=>$fixture_id]);
       //  $team_home = Team::query()->firstWhere(['team_id' => $team_id]);
         return $fixture;
+    }
+    static function getLottofixtureItem($fixture_id)
+    {
+        $fixtures=LottoFixtureItem::query()->where(['lotto_fixture_id'=>$fixture_id])->get();
+        return $fixtures;
+    }
+    static function getPlayingItem($game_id,$fixture_item_id)
+    {
+        $play=PlayingFixture::query()->firstWhere(['game_play_id'=>$game_id,'loto_fixture_item_id'=>$fixture_item_id]);
+
+        return $play;
     }
     static function calculPointHome($stading)
     {

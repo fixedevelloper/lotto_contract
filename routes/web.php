@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,12 @@ Route::get('/resultat/{id}', [FrontController::class, 'resultat'])
     ->name('resultat');
 Route::get('admin/configuration', [FrontController::class, 'configuration'])
     ->name('configuration');
+Route::get('dashboard', [DashboardController::class, 'dashboard'])
+    ->name('dashboard');
+Route::get('my-game', [DashboardController::class, 'myGame'])
+    ->name('mygame');
+Route::get('logout', [DashboardController::class, 'logout'])
+    ->name('logout');
 Route::get('/register', [FrontController::class, 'register'])
     ->name('nextregister');
 Route::match(['POST','GET'],'/register_ajax', [FrontController::class, 'register_ajax'])->name('register_ajax');
