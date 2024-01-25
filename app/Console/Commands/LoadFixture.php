@@ -50,7 +50,7 @@ class LoadFixture extends Command
            }
             $fixture->referee=$item['referee'];
             $fixture->st_long=$item['st_long'];;
-            $fixture->st_short=$item['day_timestamp'];;
+            $fixture->st_short=$item['st_short'];;
             $fixture->st_elapsed=$item['st_elapsed'];
             $fixture->team_away_winner=$item['team_away_winner'];;
             $fixture->team_home_winner=$item['team_home_winner'];;
