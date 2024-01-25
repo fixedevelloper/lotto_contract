@@ -24,6 +24,21 @@
                             <span>Live</span>
                         </a>
                     </li>
+
+                        @if(is_null(\Illuminate\Support\Facades\Session::get("address_connect")))
+                        <li class="d-lg-none">   <a href="javascript:void(0);" onclick="lotto.login()" id="login_id" class="cmn--btn">
+                                <span>Sign In</span>
+                            </a>
+                        </li>
+                        @endif
+                        @if(is_null(\Illuminate\Support\Facades\Session::get("address_connect")))
+                            <li class="d-lg-none">
+                            <a href="{{route("nextregister")}}" class="cmn--btn2">
+                                <span class="rela">Sign Up</span>
+                            </a>
+                            </li>
+                        @endif
+
                 </ul>
             </div>
             <div class="mneu-btn-grp">
