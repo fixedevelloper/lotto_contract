@@ -1,4 +1,4 @@
-@extends('base')
+@extends('backend.backend')
 @section('title') Conbinaison @endsection
 @section('content')
     <div class="container">

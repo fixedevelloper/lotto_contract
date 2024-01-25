@@ -44,8 +44,11 @@ class FrontController extends Controller
     {
         $address=Session::get("address_connect");
         $lotto=LottoFixture::find($id);
+        if (is_null($lotto)){
+            return redirect("/");
+        }
+
         $data = LottoFixtureItem::query()->where(['lotto_fixture_id'=>$id])->get();
-       // $is_then= Carbon::parse($lotto->end_time)->diffInMinutes(Carbon::today())>0;
         $is_then= Carbon::today()->timestamp-Carbon::parse($lotto->end_time)->timestamp>1;
         logger($is_then);
         return view('game', [
@@ -70,23 +73,7 @@ class FrontController extends Controller
         ]);
 
     }
-    public function configuration(Request $request)
-    {
-        if (is_null($request->get('date'))) {
-            $date_ = Carbon::today()->format('Y-m-d');
-            $timestamp = Carbon::today()->getTimestamp();
-        } else {
-            $date_ = $request->get('date');
-            $timestamp = Carbon::parse($date_)->getTimestamp();
-        }
-        $data = Fixture::query()->where(['day_timestamp' => $timestamp])->whereNotIn("st_short", ["CANC", "PST"])
-            ->distinct()->get();
-        return view('configuration', [
-            "fixtures" => $data,
-            'date' => $date_
-        ]);
 
-    }
     public function login(){
         return view('next_login', []);
     }
