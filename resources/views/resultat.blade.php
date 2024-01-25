@@ -44,14 +44,14 @@
                                             <td width="40%">
                                                 <div class="mart__point__items">
                                                     <a href="javascript:void(0);" class="point__box">
-                                                        <input type="radio" @if($fixture->) name="{{$fixture->fixture_id}}" value="1" id="check1{{$item->id}}">
+                                                        <input type="radio" @if($fixture->team_home_winner) checked @endif value="1" id="check1{{$item->id}}">
                                                         <label for="check1{{$item->id}}">
                                                             <span class="break">1</span>
                                                             <div><i class="fa fa-check"></i></div>
                                                         </label>
                                                     </a>
                                                     <a href="javascript:void(0);" class="point__box">
-                                                        <input type="radio" name="{{$fixture->fixture_id}}" value="3" id="check3{{$item->id}}">
+                                                        <input @if($fixture->team_home_winner && $fixture->team_away_winner) checked @endif type="radio" name="{{$fixture->fixture_id}}" value="3" id="check3{{$item->id}}">
                                                         <label for="check3{{$item->id}}">
                                                             <span class="break">x</span>
                                                             <div>   <i class="fa fa-check"></i></div>
@@ -59,7 +59,7 @@
 
                                                     </a>
                                                     <a href="javascript:void(0);" class="point__box">
-                                                        <input type="radio" name="{{$fixture->fixture_id}}" value="2" id="check2{{$item->id}}">
+                                                        <input type="radio" @if($fixture->team_away_winner) checked @endif name="{{$fixture->fixture_id}}" value="2" id="check2{{$item->id}}">
                                                         <label for="check2{{$item->id}}">
                                                             <span class="break">2</span>
                                                             <div><i class="fa fa-check"></i></div>
@@ -84,13 +84,13 @@
                         </div>
 
                     </div>
-                    <div class="d-grid gap-2 mt-3">
+               {{--     <div class="d-grid gap-2 mt-3">
                         @if($is_then)
                             <a class="btn btn-outline-primary btn-lg btn-block"> Resultats</a>
                         @else
                             <a class="btn btn-outline-success btn-lg btn-block" id="send_conbinaison"> Valider</a>
                         @endif
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>

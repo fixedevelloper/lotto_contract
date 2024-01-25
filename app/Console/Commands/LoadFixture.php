@@ -28,6 +28,7 @@ class LoadFixture extends Command
      */
     public function handle()
     {
+        logger("---------step load-------------");
         $date_ = Carbon::today()->format('Y-m-d');
         $timestamp_ = Carbon::today()->addDays(1)->format('Y-m-d');
         $response=FootballAPIService::getAllFixturesBetweenDate($date_,$timestamp_);

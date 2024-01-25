@@ -28,6 +28,8 @@ Route::get('/', [FrontController::class, 'home'])
     ->name('home');
 Route::get('/game/{id}', [FrontController::class, 'game'])
     ->name('game');
+Route::get('/resultat/{id}', [FrontController::class, 'resultat'])
+    ->name('resultat');
 Route::get('admin/configuration', [FrontController::class, 'configuration'])
     ->name('configuration');
 Route::get('/register', [FrontController::class, 'register'])

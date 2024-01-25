@@ -22,66 +22,6 @@
                 <div class="card-body">
                     <div class="height__table">
                         <div class="main__table">
-                            {{--<div class="table__wrap">
-                                @foreach($fixtures as $item)
-                                    @php
-                                    $fixture=\App\Helpers\Helpers::getFixture($item->fixture_id);
-
-                                     $team_home=\App\Helpers\Helpers::getTeamByID($fixture->team_home_id);
-                                     $team_away=\App\Helpers\Helpers::getTeamByID($fixture->team_away_id);
-                                    @endphp
-                            <div class="table__items b__bottom">
-                                <span hidden>{{$item->id}}</span>
-                                <div class="t__items">
-
-                                    <div class="t__items__left text-end">
-                                        <h6>
-                                            <img height="40"
-                                                 src="{{$team_home['logo']}}">
-                                            {{$team_home['name']}}
-                                        </h6>
-                                    </div>
-
-                                </div>
-                                <div class="mart__point__items">
-                                    <a href="javascript:void(0);" class="point__box">
-                                        <input type="checkbox" name="fixure" value="1" id="check1{{$item->id}}">
-                                        <label for="check1{{$item->id}}">
-                                            <span class="break">1</span>
-                                            <div><i class="fa fa-check"></i></div>
-                                        </label>
-
-                                    </a>
-                                    <a href="javascript:void(0);" class="point__box">
-                                        <input type="checkbox" name="fixure" value="3" id="check3{{$item->id}}">
-                                        <label for="check3{{$item->id}}">
-                                            <span class="break">x</span>
-                                            <div>   <i class="fa fa-check"></i></div>
-                                        </label>
-
-                                    </a>
-                                    <a href="javascript:void(0);" class="point__box">
-                                        <input type="checkbox" name="fixure" value="2" id="check2{{$item->id}}">
-                                        <label for="check2{{$item->id}}">
-                                            <span class="break">2</span>
-                                            <div><i class="fa fa-check"></i></div>
-                                        </label>
-
-                                    </a>
-                                </div>
-                                <div class="t__items">
-                                    <div class="t__items__left">
-                                        <h6>
-                                            <img height="40"
-                                                 src="{{$team_away['logo']}}">
-                                            {{$team_away['name']}}
-                                        </h6>
-                                    </div>
-
-                                </div>
-                            </div>
-                                @endforeach
-                            </div>--}}
                             <div class="table-responsive">
                                 <table class="table table__wrap text-white" id="table_game">
                                     <tbody>
@@ -148,7 +88,7 @@
                     </div>
                     <div class="d-grid gap-2 mt-3">
                         @if($is_then)
-                            <a class="btn btn-outline-primary btn-lg btn-block"> Resultats</a>
+                            <a class="btn btn-outline-primary btn-lg btn-block" href="{{route("resultat",['id'=>$lotto->id])}}"> Resultats</a>
                         @else
                             <a class="btn btn-outline-success btn-lg btn-block" id="send_conbinaison"> Valider</a>
                         @endif
