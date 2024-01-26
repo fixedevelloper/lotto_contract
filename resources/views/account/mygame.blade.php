@@ -50,8 +50,8 @@
                         <td><h6><img height="40" width="40"
                                        src="{{$team_away['logo']}}">
                             {{$team_away['name']}}</h6></td>
-                        <td @if($result===$value) class="bg-success" @else class="bg-danger" @endif>
-                            {{\App\Helpers\Helpers::getPlayingItem($item->id,$lotto->id)->value}}
+                        <td @if($result==$value) class="bg-success" @else class="bg-danger" @endif>
+                            {{$value}}
                         </td>
                         <td>
                             {{$fixture->score_ft_home}}-{{$fixture->score_ft_away}}
