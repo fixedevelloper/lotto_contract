@@ -51,7 +51,7 @@
                                                         </label>
                                                     </a>
                                                     <a href="javascript:void(0);" class="point__box">
-                                                        <input @if($fixture->team_home_winner && $fixture->team_away_winner) checked @endif type="radio" name="{{$fixture->fixture_id}}" value="3" id="check3{{$item->id}}">
+                                                        <input @if($fixture->team_home_winner==false && $fixture->team_away_winner==false) checked @endif type="radio" name="{{$fixture->fixture_id}}" value="3" id="check3{{$item->id}}">
                                                         <label for="check3{{$item->id}}">
                                                             <span class="break">x</span>
                                                             <div>   <i class="fa fa-check"></i></div>
