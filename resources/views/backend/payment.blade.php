@@ -12,6 +12,7 @@
             <table class="table text-white" id="table_payment">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>User</th>
                     <th>Address</th>
                     <th>Match win</th>
@@ -21,6 +22,7 @@
                 <tbody>
                 @foreach($winners as $winner)
                     <tr>
+                        <td><input type="checkbox"></td>
                         <td>{{$winner['user']}}</td>
                         <td>{{$winner['address']}}</td>
                         <td>{{$winner['count']}} / {{$count_items}}</td>

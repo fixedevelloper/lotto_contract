@@ -146,11 +146,11 @@ var lotto = function () {
             }
         })
         const jsonObj = [];
-        $("#table_payment>tbody>tr").each(function () {
+        $("#table_payment>tbody input[type='checkbox']:checked").each(function () {
             var row = $(this).closest('tr')[0];
-            var id = row.cells[0].innerText;
-            var address = row.cells[1].innerText;
-            var amount = row.cells[3].children[0].value;
+            var id = row.cells[1].innerText;
+            var address = row.cells[2].innerText;
+            var amount = row.cells[4].children[0].value;
             const item = {};
             item['id'] = id;
             item['address'] = address;
