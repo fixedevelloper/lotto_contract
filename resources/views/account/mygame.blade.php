@@ -1,7 +1,7 @@
 @extends('account.layout')
 
 @section('content')
-    <div class="accordion" id="accordionExample">
+    <div class="accordion mt-3" id="accordionExample">
         @foreach($mygames as $item)
     <div class="accordion-item">
         <h2 class="accordion-header" id="{{$loop->index}}">

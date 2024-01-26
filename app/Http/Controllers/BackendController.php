@@ -58,6 +58,43 @@ class BackendController extends Controller
             'route' => "lis_fixtures",
         ]);
     }
+    public function payment(Request $request, $id)
+    {
+        $lotto = LottoFixture::find($id);
+        $count_items = LottoFixtureItem::query()->where(['lotto_fixture_id' => $id])->count();
+        $games = GamePlay::query()->where(['lotto_fixture_id' => $id])->get();
+        $winners = [];
+        foreach ($games as $game) {
+            $count = 0;
+            $choices=[];
+            $lists = PlayingFixture::query()->where(['game_play_id' => $game->id])->get();
+            foreach ($lists as $list) {
+                $fixture = Fixture::query()->firstWhere(['fixture_id' => $list->lotto_fixture_item->fixture_id]);
+                if ($fixture->team_home_winner && $list->value == 1) {
+                    $count++;
+                } elseif ($fixture->team_away_winner && $list->value == 2) {
+                    $count++;
+                } elseif (!$fixture->team_home_winner && !$fixture->team_away_winner && $list->value == 3) {
+                    $count++;
+                }
+            }
+            $winners[] = [
+                "game_id" => $game->id,
+                "user" => $game->user->id,
+                "address" => $game->user->address,
+                "count" => $count,
+
+            ];
+        }
+        $volume  = array_column($winners, 'count');
+        array_multisort($volume, SORT_DESC, $winners);
+        return view('backend.payment', [
+            "lotto" => $lotto,
+            "winners"=>$winners,
+            'route' => "lis_fixtures",
+            "count_items"=>$count_items
+        ]);
+    }
     public function result(Request $request, $id)
     {
         $lotto = LottoFixture::find($id);
@@ -88,7 +125,6 @@ class BackendController extends Controller
         }
         $volume  = array_column($winners, 'count');
         array_multisort($volume, SORT_DESC, $winners);
-        logger($winners);
         return view('backend.result', [
             "list_items" => $list_items,
             "lotto" => $lotto,

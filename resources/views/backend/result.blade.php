@@ -2,9 +2,9 @@
 @section('title') Looto resultats @endsection
 @section('content')
     <div class="container">
-        <h3 class="mt-3 text-white">Grille de match {{$lotto->title}}</h3>
+        <h3 class="mt-3 text-white">Grille de match  {{$lotto->title}} du {{\Carbon\Carbon::parse($lotto->end_time)->format("d/m/Y")}}</h3>
     </div>
-    <div class="card card_dark">
+    <div class="card card_dark mt-3">
         <div class="card-body">
             <table class="table text-white">
                 <thead>
@@ -83,7 +83,7 @@
                     <tr>
                         <td>{{$winner['user']}}</td>
                         <td>{{$winner['address']}}</td>
-                        <td>{{$winner['count']}}</td>
+                        <td>{{$winner['count']}} / {{sizeof($list_items)}}</td>
                         <td><a class="btn btn-success btn-sm" href="{{route("admin.winner_detail",['id'=>$winner['game_id']])}}">voir</a></td>
                     </tr>
                 @endforeach
@@ -91,6 +91,11 @@
                 </tbody>
             </table>
 
+        </div>
+        <div class="card-footer">
+            <div class="d-grid gap-2">
+                <a class="btn btn-success" href="{{route('admin.payment',['id'=>$lotto->id])}}">Payement <i class="fa fa-arrow-right"></i></a>
+            </div>
         </div>
     </div>
 @endsection

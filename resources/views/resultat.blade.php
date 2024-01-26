@@ -10,7 +10,7 @@
                <span class="text-danger text-opacity-100">Fermé</span>
            @endif</h2>
 
-                <h2 class="text-white text-center text-uppercase">{{$lotto->title}}</h2>
+                <h2 class="text-white text-center text-uppercase">{{$lotto->title}} du {{\Carbon\Carbon::parse($lotto->end_time)->format("d/m/Y")}}</h2>
                 <h6>Fin de validation : <span>{{$lotto->end_time }}</span></h6>
            </div>
         </div>

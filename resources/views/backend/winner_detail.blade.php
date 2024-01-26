@@ -2,7 +2,7 @@
 @section('title') detail winner @endsection
 @section('content')
 
-    <div class="card card_dark">
+    <div class="card card_dark mt-3">
         <div class="card-body">
             <table class="table text-white">
                 <thead>

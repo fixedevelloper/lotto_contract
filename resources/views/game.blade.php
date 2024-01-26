@@ -5,15 +5,19 @@
     <span id="lotto_fixture_id" hidden>{{$lotto->id}}</span>
     <div class="row mt-3">
         <div class="card card_dark text-white">
-            <div class="card-body text-center">{{$is_then}}
+            <div class="card-body text-center">
        <h2 class="text-white text-center">Lotto N°{{$lotto->id}}
            @if($is_then)
                <span class="text-danger text-opacity-100">Fermé</span>
            @endif</h2>
 
-                <h2 class="text-white text-center text-uppercase">{{$lotto->title}}</h2>
+                <h2 class="text-white text-center text-uppercase">{{$lotto->title}} du {{\Carbon\Carbon::parse($lotto->end_time)->format("d/m/Y")}}</h2>
                 <h6>Fin de validation : <span>{{$lotto->end_time }}</span></h6>
-
+                <div class="mt-3">
+                    @if($is_then)
+                        <a class="btn btn-outline-danger btn-lg btn-block" href="{{route("resultat",['id'=>$lotto->id])}}"> Resultats</a>
+                   @endif
+                </div>
                 {{--<h6>Fin de validation dans : <span  class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($lotto->end_time)->format('Y/m/d h:i:s') }}"></span></h6>--}}
             </div>
         </div>

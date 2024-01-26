@@ -138,6 +138,27 @@ var lotto = function () {
         }
 
     };
+    const sendPayement=async function() {
+        $('#spinner_send').show();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+        const jsonObj = [];
+        $("#table_payment>tbody>tr").each(function () {
+            var row = $(this).closest('tr')[0];
+            var id = row.cells[0].innerText;
+            var address = row.cells[1].innerText;
+            var amount = row.cells[3].children[0].value;
+            const item = {};
+            item['id'] = id;
+            item['address'] = address;
+            item['amount'] = amount;
+            jsonObj.push(item)
+        });
+        console.log(JSON.stringify({data: jsonObj}))
+    }
     const sendLottery=async function(){
         $('#spinner_send').show();
         $('#spinner_send_svg').hide()
@@ -238,7 +259,8 @@ var lotto = function () {
         register,
         login,
         getBalance,
-        sendLottery
+        sendLottery,
+        sendPayement
     }
 }();
 jQuery(document).ready(function() {

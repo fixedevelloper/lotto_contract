@@ -47,7 +47,7 @@
 <body>
 <div class="dashboard__body mt__30 pb-60">
     @include('_partials._header')
-    <div class="container">
+    <div class="container-fluid mt-3">
         <div class="row g-4">
             @include('backend.sider_menu')
             <div class="col-xxl-9 col-xl-9 col-lg-8">
