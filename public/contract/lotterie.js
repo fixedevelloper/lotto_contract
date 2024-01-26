@@ -139,13 +139,16 @@ var lotto = function () {
 
     };
     const sendPayement=async function() {
-        $('#spinner_send').show();
+        $('#send_payment').show();
+        var account= await getAccount()
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         })
         const jsonObj = [];
+        const addresses = [];
+        const amounts = [];
         $("#table_payment>tbody input[type='checkbox']:checked").each(function () {
             var row = $(this).closest('tr')[0];
             var id = row.cells[1].innerText;
@@ -155,10 +158,27 @@ var lotto = function () {
             item['id'] = id;
             item['address'] = address;
             item['amount'] = amount;
+            addresses.push(address)
+            amounts.push(amount)
             jsonObj.push(item)
         });
-        console.log(JSON.stringify({data: jsonObj}))
-    }
+        console.log(addresses)
+        try {
+            window.mxgfcontract = await new window.web3.eth.Contract(initialiseABI().StakingnmatrixAbi, initialiseABI().stakingaddress);
+            var result = await window.mxgfcontract.methods.DistributeEarnings(addresses,amounts).send({
+                from: account,
+                gasLimit: 400000,
+                gas: 400000,
+            });
+            $('#send_payment').hide();
+            toastr.success('Operation executed successfully', 'Success')
+        }catch (e) {
+            console.log(e)
+            toastr.error('An error has occurred' + JSON.stringify((e)),'Error')
+            $('#send_payment').hide();
+        }
+
+        }
     const sendLottery=async function(){
         $('#spinner_send').show();
         $('#spinner_send_svg').hide()
@@ -251,6 +271,7 @@ var lotto = function () {
             initialiseABI();
             $('#spinner_send').hide();
             $('#spinner_register').hide();
+            $('#send_payment').hide();
         },
         load: function () {
             initialiseEtheruim();

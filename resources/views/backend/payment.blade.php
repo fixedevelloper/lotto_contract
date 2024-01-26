@@ -36,7 +36,7 @@
         </div>
         <div class="card-footer">
             <div class="d-grid gap-2">
-            <button onclick="lotto.sendPayement()" class="btn btn-outline-warning">Envoyer</button>
+            <button onclick="lotto.sendPayement()" class="btn btn-outline-warning"><i class="fa fa-spinner fa-spin" id="send_payment"></i>Envoyer</button>
             </div>
         </div>
     </div>

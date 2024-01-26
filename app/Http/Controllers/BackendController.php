@@ -88,6 +88,14 @@ class BackendController extends Controller
         }
         $volume  = array_column($winners, 'count');
         array_multisort($volume, SORT_DESC, $winners);
+       $winners= array_filter($winners,function ($iten) use ($count_items) {
+            $res=false;
+            $value= $count_items- $iten["count"];
+            if ($value<=1){
+                $res= true;
+            }
+            return $res;
+        });
         return view('backend.payment', [
             "lotto" => $lotto,
             "winners"=>$winners,
