@@ -5,6 +5,18 @@
         <h3 class="mt-3 text-white">Liste des grilles de matchs</h3>
     </div>
     <div class="row">
+        <div class="card card_dark mt-5">
+            <div class="card-body">
+                <form id="form_grille">
+                    <div class="col-md-6">
+                        <div class="">
+                            <label class="form-label">Date</label>
+                            <input type="date" name="date" class="form-control " id="grille_date">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         <div class="col-md-12 mt-5">
             <div class="card card_dark">
                 <div class="card-body">

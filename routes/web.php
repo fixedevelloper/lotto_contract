@@ -49,6 +49,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         ->name('lotto_fixture_list');
     Route::match(["POST", "GET"], '/result/{id}', [BackendController::class, 'result'])
         ->name('result');
+    Route::match(["POST", "GET"], '/winner_detail/{id}', [BackendController::class, 'winner_detail'])
+        ->name('winner_detail');
     Route::get('configuration', [BackendController::class, 'configuration'])
         ->name('configuration');
 });

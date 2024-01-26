@@ -103,10 +103,8 @@
     }
     $(function () {
 
-        $('#date_home').change(function () {
-            console.log($(this).val())
-            console.log(configs.routes.home+'?date='+$(this).val())
-            $('#form_date').submit()
+        $('#grille_date').change(function () {
+            $('#form_grille').submit()
         })
         $('#stat_filter').change(function () {
             $('#form_stat').submit()

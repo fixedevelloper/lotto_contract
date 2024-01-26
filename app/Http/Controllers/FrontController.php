@@ -65,6 +65,7 @@ class FrontController extends Controller
         $lotto=LottoFixture::find($id);
         $data = LottoFixtureItem::query()->where(['lotto_fixture_id'=>$id])->get();
         $is_then= Carbon::parse($lotto->end_date)->diffInMinutes(Carbon::today())>0;
+        logger($lotto->end_date);
         return view('resultat', [
             "fixtures" => $data,
             "address"=>$address,

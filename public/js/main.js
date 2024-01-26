@@ -24,122 +24,7 @@ $(document).ready(function () {
 	//menu header bar
 
 	//owl carousel
-	$(".match__fixing__wrap").owlCarousel({
-		loop: true,
-		margin: 9,
-		smartSpeed: 2500,
-		autoplayTimeout: 3000,
-		autoplay: false,
-		nav: false,
-		dots: false,
-		responsiveClass: true,
-		navText: [
-			'<i class="fa-solid fa-angle-left"></i>',
-			'<i class="fa-solid fa-angle-right"></i>',
-		],
-		responsive: {
-			0: {
-				items: 1,
-			},
-			600: {
-				items: 2,
-			},
-			767: {
-				items: 2,
-			},
-			991: {
-				items: 2,
-			},
-			1199: {
-				items: 2,
-			},
-			1243: {
-				items: 3,
-			},
-			1399: {
-				items: 4,
-			},
-		},
-	});
-	//Sponsor Carousel
-	$(".footer__sponsor").owlCarousel({
-		loop: true,
-		margin: 9,
-		smartSpeed: 2500,
-		autoplayTimeout: 3000,
-		autoplay: false,
-		nav: false,
-		dots: false,
-		responsiveClass: true,
-		navText: [
-			'<i class="fa-solid fa-angle-left"></i>',
-			'<i class="fa-solid fa-angle-right"></i>',
-		],
-		responsive: {
-			0: {
-				items: 2,
-			},
-			400: {
-				items: 3,
-			},
-			600: {
-				items: 4,
-			},
-			767: {
-				items: 5,
-			},
-			991: {
-				items: 4,
-			},
-			1199: {
-				items: 5,
-			},
-			1243: {
-				items: 6,
-			},
-			1799: {
-				items: 9,
-			},
-		},
-	});
-	//owl carousel
-	$(".horse__slide__wrap").owlCarousel({
-		loop: true,
-		margin: 24,
-		smartSpeed: 2500,
-		autoplayTimeout: 3000,
-		autoplay: false,
-		nav: false,
-		dots: false,
-		responsiveClass: true,
-		navText: [
-			'<i class="fa-solid fa-angle-left"></i>',
-			'<i class="fa-solid fa-angle-right"></i>',
-		],
-		responsive: {
-			0: {
-				items: 1,
-			},
-			600: {
-				items: 2,
-			},
-			767: {
-				items: 2,
-			},
-			991: {
-				items: 2,
-			},
-			1199: {
-				items: 2,
-			},
-			1243: {
-				items: 3,
-			},
-			1399: {
-				items: 4,
-			},
-		},
-	})
+
 
 	//Deposit complate
 	    // Number Active
@@ -157,19 +42,7 @@ $(document).ready(function () {
 	//Date Picker
 
 	//Magnifiq pupup
-	$('.picture-btn').magnificPopup({
-		type: 'image',
-		gallery:{
-			enabled:true
-		}
-	});
 
-	$('.play-btn').magnificPopup({
-		type: 'iframe',
-		callbacks: {
-
-			}
-	});
 	//Magnifiq pupup
 
 	//Serach Popup
@@ -252,13 +125,13 @@ $(document).ready(function () {
 
 
 	// wow animation
-	new WOW().init();
+	//new WOW().init();
 	// wow animation
 
 	//preloader
-	setTimeout(function(){
+/*	setTimeout(function(){
 		$('.bg-load').fadeToggle();
-	}, 1500);
+	}, 1500);*/
 	//preloader
 
 	//--Nice Select--//

@@ -78,6 +78,12 @@
             <script type="module" src="{{asset('contract/main.js')}}"></script>
             <script src="{{ asset('contract/lotterie.js') }}"></script>
             <script>
+                $(function () {
+
+                    $('#grille_date').change(function () {
+                        $('#form_grille').submit()
+                    })
+                })
                 var configs = {
                     routes: {
                         index: "{{\Illuminate\Support\Facades\URL::to('/')}}",

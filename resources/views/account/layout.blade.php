@@ -78,6 +78,7 @@
             <script type="module" src="{{asset('contract/main.js')}}"></script>
             <script src="{{ asset('contract/lotterie.js') }}"></script>
             <script>
+
                 var configs = {
                     routes: {
                         index: "{{\Illuminate\Support\Facades\URL::to('/')}}",
