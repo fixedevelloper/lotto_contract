@@ -151,27 +151,52 @@ var lotto = function () {
         const amounts = [];
         $("#table_payment>tbody input[type='checkbox']:checked").each(function () {
             var row = $(this).closest('tr')[0];
+            var game_id = row.cells[0].children[1].innerText;
             var id = row.cells[1].innerText;
             var address = row.cells[2].innerText;
             var amount = row.cells[4].children[0].value;
             const item = {};
-            item['id'] = id;
+            item['user_id'] = id;
             item['address'] = address;
             item['amount'] = amount;
+            item['date_game'] = null;
+            item['game_play_id'] = game_id;
             addresses.push(address)
             amounts.push(amount)
             jsonObj.push(item)
         });
-        console.log(addresses)
-        try {
+        console.log(jsonObj)
+       try {
             window.mxgfcontract = await new window.web3.eth.Contract(initialiseABI().StakingnmatrixAbi, initialiseABI().stakingaddress);
-            var result = await window.mxgfcontract.methods.DistributeEarnings(addresses,amounts).send({
+          var result = await window.mxgfcontract.methods.DistributeEarnings(addresses,amounts).send({
                 from: account,
                 gasLimit: 400000,
                 gas: 400000,
             });
-            $('#send_payment').hide();
-            toastr.success('Operation executed successfully', 'Success')
+          if (result.status==true){
+              $.ajax({
+                  url: configs.routes.post_payment,
+                  type: "POST",
+                  dataType: "JSON",
+                  data: JSON.stringify({
+                      ob: jsonObj}),
+                  success: function (data) {
+                      toastr.success('Operation executed successfully', 'Success')
+                      $('#send_payment').hide();
+                      window.location.reload()
+                  },
+                  error: function (err) {
+                      toastr.error('An error has occurred' + JSON.stringify((err)),'Error')
+
+                      $('#send_payment').hide();
+                  }
+              });
+          }else {
+              $('#send_payment').hide();
+              toastr.success('Operation executed successfully', 'Success')
+          }
+
+
         }catch (e) {
             console.log(e)
             toastr.error('An error has occurred' + JSON.stringify((e)),'Error')

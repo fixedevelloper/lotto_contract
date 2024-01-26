@@ -8,6 +8,7 @@ use App\Models\Fixture;
 use App\Models\GamePlay;
 use App\Models\LottoFixture;
 use App\Models\LottoFixtureItem;
+use App\Models\Payment;
 use App\Models\PlayingFixture;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -91,7 +92,7 @@ class BackendController extends Controller
        $winners= array_filter($winners,function ($iten) use ($count_items) {
             $res=false;
             $value= $count_items- $iten["count"];
-            if ($value<=1){
+            if ($value<=2){
                 $res= true;
             }
             return $res;
@@ -139,5 +140,20 @@ class BackendController extends Controller
             "winners"=>$winners,
             'route' => "lis_fixtures",
         ]);
+    }
+    public function postPayment(Request $request)
+    {
+        $data = json_decode($request->getContent(), true);
+        $ob = $data['ob'];
+        for ($i = 0; $i < sizeof($ob); ++$i) {
+            $payment=new Payment();
+            $payment->game_play_id=$ob[$i]['game_play_id'];
+            $payment->user_id=$ob[$i]['user_id'];
+            $payment->amount=$ob[$i]['amount'];
+            $payment->date_game=$ob[$i]['date_game'];
+            $payment->save();
+        }
+        return response()->json($ob);
+
     }
 }

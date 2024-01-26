@@ -92,6 +92,7 @@
                         postgame_ajax: "{{\Illuminate\Support\Facades\URL::route('postGame')}}",
                         login_next: "{{\Illuminate\Support\Facades\URL::route('login_next')}}",
                         check_register: "{{\Illuminate\Support\Facades\URL::route('check_register')}}",
+                        post_payment: "{{\Illuminate\Support\Facades\URL::route('admin.post_payment')}}",
                     }
                 }
 

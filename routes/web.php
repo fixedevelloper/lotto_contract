@@ -55,4 +55,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         ->name('payment');
     Route::get('configuration', [BackendController::class, 'configuration'])
         ->name('configuration');
+    Route::match(["POST", "GET"], '/post_payment', [BackendController::class, 'postPayment'])
+        ->name('post_payment');
 });

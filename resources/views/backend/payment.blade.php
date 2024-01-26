@@ -22,7 +22,7 @@
                 <tbody>
                 @foreach($winners as $winner)
                     <tr>
-                        <td><input type="checkbox"></td>
+                        <td><input type="checkbox"><span hidden>{{$winner['game_id']}}</span></td>
                         <td>{{$winner['user']}}</td>
                         <td>{{$winner['address']}}</td>
                         <td>{{$winner['count']}} / {{$count_items}}</td>
