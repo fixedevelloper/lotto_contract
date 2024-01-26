@@ -92,7 +92,7 @@ class BackendController extends Controller
        $winners= array_filter($winners,function ($iten) use ($count_items) {
             $res=false;
             $value= $count_items- $iten["count"];
-            if ($value<=2){
+            if ($value<=1){
                 $res= true;
             }
             return $res;
