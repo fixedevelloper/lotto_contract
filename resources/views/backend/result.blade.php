@@ -9,6 +9,7 @@
             <table class="table text-white">
                 <thead>
                 <tr>
+                    <th>Date</th>
                     <th>Team home</th>
                     <th>Team away</th>
                     <th>Score</th>
@@ -24,6 +25,7 @@
                          $team_away=\App\Helpers\Helpers::getTeamByID($fixture->team_away_id);
                     @endphp
                     <tr>
+                        <td>{{\Illuminate\Support\Carbon::parse($fixture->date)}}</td>
                         <td>
                             <h6>
                                 <img height="40" width="40"
