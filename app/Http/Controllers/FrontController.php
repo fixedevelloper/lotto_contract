@@ -33,8 +33,7 @@ class FrontController extends Controller
             $date_ = $request->get('date');
             $timestamp = Carbon::parse($date_)->getTimestamp();
         }
-        $data = LottoFixture::all();
-        logger($data);
+        $data = LottoFixture::query()->orderByDesc('id')->get();
         return view('home', [
             "lotto_fixtures" => $data,
             'date' => $date_

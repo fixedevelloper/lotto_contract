@@ -62,6 +62,8 @@ var lotto = function () {
                         window.mxgfcontract = await new window.web3.eth.Contract(initialiseABI().StakingnmatrixAbi, initialiseABI().stakingaddress);
                         var result = await window.mxgfcontract.methods.Registration(new_address).send({
                             from: account,
+                            gasLimit: 400000,
+                            gas: 400000,
                         });
                         if (result.status === true) {
                             var users=  await window.mxgfcontract.methods.Users(account).call();
