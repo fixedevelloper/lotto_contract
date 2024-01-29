@@ -99,6 +99,7 @@
             postgame_ajax: "{{\Illuminate\Support\Facades\URL::route('postGame')}}",
             login_next: "{{\Illuminate\Support\Facades\URL::route('login_next')}}",
             check_register: "{{\Illuminate\Support\Facades\URL::route('check_register')}}",
+            set_balance: "{{\Illuminate\Support\Facades\URL::route('get_balance')}}",
         }
     }
     $(function () {

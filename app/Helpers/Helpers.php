@@ -77,11 +77,69 @@ class Helpers
     static function getPlayingItem($game_id,$fixture_item_id)
     {
         $play=PlayingFixture::query()->firstWhere(['game_play_id'=>$game_id,'loto_fixture_item_id'=>$fixture_item_id]);
-
         return $play;
     }
     static function calculPointHome($stading)
     {
         return $stading->home_win * 3 + $stading->home_draw;
+    }
+    static function calculAmountWinner($cagnote,$players,$totalfixture){
+        $amount_winners=[];
+        $amount_x_x=$cagnote*0.5;
+        $amount_x_1=$cagnote*0.2;
+        $amount_x_2=$cagnote*0.1;
+        $winner_x_x= array_filter($players,function ($iten) use ($totalfixture) {
+            $res=false;
+            $value= $totalfixture- $iten["count"];
+            if ($value==0){
+                $res= true;
+            }
+            return $res;
+        });
+        $winner_1_x= array_filter($players,function ($iten) use ($totalfixture) {
+            $res=false;
+            $value= $totalfixture- $iten["count"];
+            if ($value==1){
+                $res= true;
+            }
+            return $res;
+        });
+        $winner_x_2= array_filter($players,function ($iten) use ($totalfixture) {
+            $res=false;
+            $value= $totalfixture- $iten["count"];
+            if ($value==2){
+                $res= true;
+            }
+            return $res;
+        });
+        foreach ($winner_x_x as $wi){
+            $amount_winners[]=[
+                "game_id" => $wi["game_id"],
+                "user" => $wi["user"],
+                "address" => $wi["address"],
+                "count" => $wi["count"],
+                "amount"=>$amount_x_x/sizeof($winner_x_x)
+            ];
+        }
+        foreach ($winner_1_x as $wi){
+            $amount_winners[]=[
+                "game_id" => $wi["game_id"],
+                "user" => $wi["user"],
+                "address" => $wi["address"],
+                "count" => $wi["count"],
+                "amount"=>$amount_x_1/sizeof($winner_1_x)
+            ];
+        }
+        foreach ($winner_x_2 as $wi){
+            $amount_winners[]=[
+                "game_id" => $wi["game_id"],
+                "user" => $wi["user"],
+                "address" => $wi["address"],
+                "count" => $wi["count"],
+                "amount"=>$amount_x_2/sizeof($winner_x_2)
+            ];
+        }
+
+        return $amount_winners;
     }
 }

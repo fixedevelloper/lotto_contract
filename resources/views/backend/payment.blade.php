@@ -26,7 +26,7 @@
                         <td>{{$winner['user']}}</td>
                         <td>{{$winner['address']}}</td>
                         <td>{{$winner['count']}} / {{$count_items}}</td>
-                        <td><input type="number" placeholder="10000000" id="py_{{$loop->index}}"></td>
+                        <td>{{$winner['amount']}}</td>
                     </tr>
                 @endforeach
 

@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Helpers\Helpers;
 use App\Models\Fixture;
 use App\Models\GamePlay;
 use App\Models\LottoFixture;
@@ -12,6 +13,7 @@ use App\Models\Payment;
 use App\Models\PlayingFixture;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class BackendController extends Controller
 {
@@ -89,14 +91,16 @@ class BackendController extends Controller
         }
         $volume  = array_column($winners, 'count');
         array_multisort($volume, SORT_DESC, $winners);
-       $winners= array_filter($winners,function ($iten) use ($count_items) {
+/*       $winners= array_filter($winners,function ($iten) use ($count_items) {
             $res=false;
             $value= $count_items- $iten["count"];
-            if ($value<=1){
+            if ($value<=2){
                 $res= true;
             }
             return $res;
-        });
+        });*/
+        logger(Session::get("balance"));
+        $winners=Helpers::calculAmountWinner(Session::get("balance"),$winners,$count_items);
         return view('backend.payment', [
             "lotto" => $lotto,
             "winners"=>$winners,

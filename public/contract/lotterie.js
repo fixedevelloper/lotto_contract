@@ -16,9 +16,21 @@ var lotto = function () {
         return accounts[0];
     };
     const getBalance= async function(){
-        const accounts = await getAccount();
-        window.mxgfcontract = await new window.web3.eth.Contract(initialiseABIApprove().tokenmatrixAbi, initialiseABIApprove().tokenaddress);
-        const balance=  await window.mxgfcontract.methods.balanceOf(accounts).call();
+
+        var balance = await web3.eth.getBalance("0x9807872ed06f28966cdac161a8d21a5b1bae00a3")
+        $.ajax({
+            url: configs.routes.set_balance,
+            type: "GET",
+            dataType: "JSON",
+            data: {
+                'balance':convertDiv(balance)
+                //'balance':balance
+    },
+            success: function (data) {
+            },
+            error: function (err) {
+            }
+        });
         return balance;
     };
     const initialiseEtheruim = async function () {
@@ -114,7 +126,7 @@ var lotto = function () {
         var account= await getAccount();
         window.mxgfcontract = await new window.web3.eth.Contract(initialiseABI().StakingnmatrixAbi, initialiseABI().stakingaddress);
         var id=  await window.mxgfcontract.methods.Userid(account).call();
-        console.log(id)
+       // await getBalance()
         if (id>0){
             $.ajax({
                 url: configs.routes.login_next,
@@ -156,7 +168,7 @@ var lotto = function () {
             var game_id = row.cells[0].children[1].innerText;
             var id = row.cells[1].innerText;
             var address = row.cells[2].innerText;
-            var amount = row.cells[4].children[0].value;
+            var amount = row.cells[4].innerText;
             const item = {};
             item['user_id'] = id;
             item['address'] = address;

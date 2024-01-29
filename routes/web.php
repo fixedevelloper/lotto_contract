@@ -43,6 +43,7 @@ Route::get('/register', [FrontController::class, 'register'])
     ->name('nextregister');
 Route::match(['POST','GET'],'/register_ajax', [FrontController::class, 'register_ajax'])->name('register_ajax');
 Route::match(['POST','GET'],'/login_ajax', [FrontController::class, 'login_next'])->name('login_next');
+Route::match(['POST','GET'],'/get_balance', [FrontController::class, 'getBalance'])->name('get_balance');
 Route::match(['POST','GET'],'/check_register', [FrontController::class, 'check_register'])->name('check_register');
 Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => ['isAdmin']], function () {
     Route::match(["POST", "GET"], '/lotto_fixture_list', [BackendController::class, 'lotto_fixture_list'])

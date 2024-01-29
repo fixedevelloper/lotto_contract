@@ -16,6 +16,7 @@ use App\Models\Team;
 use App\Models\User;
 use App\Services\FootballAPIService;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -46,10 +47,11 @@ class FrontController extends Controller
         if (is_null($lotto)){
             return redirect("/");
         }
-
+        date_default_timezone_set(date_default_timezone_get());
         $data = LottoFixtureItem::query()->where(['lotto_fixture_id'=>$id])->get();
-        $is_then= Carbon::today()->timestamp-Carbon::parse($lotto->end_time)->timestamp>1;
-        logger($is_then);
+        $is_then= Carbon::parse(date("Y-m-d h:i"))->timestamp-Carbon::parse($lotto->end_time)->timestamp>1;
+/*        logger( $dt->format("h:i"));
+        logger(Carbon::parse($lotto->end_time, date_default_timezone_get()));*/
         return view('game', [
             "fixtures" => $data,
             "address"=>$address,
@@ -127,7 +129,7 @@ class FrontController extends Controller
         $loto_fixture=new LottoFixture();
         $loto_fixture->title=$data['title'];
         $end_time=$data['end_date'].' '.$data['end_time'];
-        $loto_fixture->end_time=new \DateTime($end_time);
+        $loto_fixture->end_time=new \DateTime($end_time,date_default_timezone_get());
         $loto_fixture->save();
 
         for ($i = 0; $i < sizeof($ob); ++$i) {
@@ -163,6 +165,13 @@ class FrontController extends Controller
         $data = json_decode($request->all(), true);
         $ob = $data['ob'];
         return response()->json($ob);
+
+    }
+    public function getBalance(Request $request)
+    {
+        $balance = $request->get("balance");
+        Session::put("balance",$balance);
+        return response()->json($balance);
 
     }
 }
