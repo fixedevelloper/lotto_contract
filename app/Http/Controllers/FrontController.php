@@ -129,7 +129,7 @@ class FrontController extends Controller
         $loto_fixture=new LottoFixture();
         $loto_fixture->title=$data['title'];
         $end_time=$data['end_date'].' '.$data['end_time'];
-        $loto_fixture->end_time=new \DateTime($end_time,date_default_timezone_get());
+        $loto_fixture->end_time=new \DateTime($end_time);
         $loto_fixture->save();
 
         for ($i = 0; $i < sizeof($ob); ++$i) {
