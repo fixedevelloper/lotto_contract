@@ -42,10 +42,10 @@ class DashboardController extends Controller
     {
         if (is_null($request->get('date'))) {
             $date_ = Carbon::today()->format('Y-m-d');
-            $timestamp = Carbon::today()->addHours(23)->format("y-m-d h:i");
+            $timestamp = Carbon::today()->addDays(1)->format("y-m-d h:i");
         } else {
             $date_ = $request->get('date');
-            $timestamp = Carbon::parse($date_)->addHours(23)->format("y-m-d h:i");
+            $timestamp = Carbon::parse($date_)->addDays(1)->format("y-m-d h:i");
         }
         $address=Session::get("address_connect");
         $user=User::query()->firstWhere(['address'=>$address]);
