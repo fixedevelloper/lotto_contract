@@ -11,12 +11,23 @@ use App\Models\LottoFixture;
 use App\Models\LottoFixtureItem;
 use App\Models\Payment;
 use App\Models\PlayingFixture;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class BackendController extends Controller
 {
+    public function partipates(Request $request)
+    {
+        $address=Session::get("address_connect");
+        $users=User::all();
+        return view('backend.partipates', [
+            "address"=>$address,
+            "users"=>$users,
+            'route'=>"partipates"
+        ]);
+    }
     public function lotto_fixture_list(Request $request)
     {
         if (is_null($request->get('date'))) {

@@ -22,15 +22,39 @@ class DashboardController extends Controller
             'route'=>"dashboard"
         ]);
     }
-    public function myGame(Request $request)
+    public function settings(Request $request)
     {
         $address=Session::get("address_connect");
+        return view('account.settings', [
+            "address"=>$address,
+            'route'=>"settings"
+        ]);
+    }
+    public function bonus(Request $request)
+    {
+        $address=Session::get("address_connect");
+        return view('account.bonus', [
+            "address"=>$address,
+            'route'=>"bonus"
+        ]);
+    }
+    public function myGame(Request $request)
+    {
+        if (is_null($request->get('date'))) {
+            $date_ = Carbon::today()->format('Y-m-d');
+            $timestamp = Carbon::today()->addHours(23)->format("y-m-d h:i");
+        } else {
+            $date_ = $request->get('date');
+            $timestamp = Carbon::parse($date_)->addHours(23)->format("y-m-d h:i");
+        }
+        $address=Session::get("address_connect");
         $user=User::query()->firstWhere(['address'=>$address]);
-        $mygames=GamePlay::query()->where(['user_id'=>$user->id])->get();
+        $mygames=GamePlay::query()->where(['user_id'=>$user->id])->whereBetween('created_at',[$date_,$timestamp])->get();
         return view('account.mygame', [
             "address"=>$address,
             'mygames'=>$mygames,
-            'route'=>"mygame"
+            'route'=>"mygame",
+            'date'=>$date_
         ]);
     }
     public function identity(Request $request)

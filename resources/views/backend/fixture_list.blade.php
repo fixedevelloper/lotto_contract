@@ -1,9 +1,10 @@
 @extends('backend.backend')
 @section('title') Looto resultats @endsection
 @section('content')
-    <div class="container">
-        <h3 class="mt-3 text-white">Liste des grilles de matchs</h3>
-    </div>
+    <h3 class="account__head mb__30">
+        Liste des grilles de matchs
+    </h3>
+
     <div class="row">
         <div class="card card_dark mt-5">
             <div class="card-body">

@@ -1,9 +1,10 @@
 @extends('backend.backend')
 @section('title') Conbinaison @endsection
 @section('content')
-    <div class="container">
-        <h3 class="mt-3 text-white">Configuration des grilles de matchs</h3>
-    </div>
+    <h3 class="account__head mb__30">
+        Configuration des grilles de matchs
+    </h3>
+
     <div class="row">
         <div class="col-md-8 mt-5">
             <div class="card card_dark">

@@ -37,6 +37,10 @@ Route::get('dashboard', [DashboardController::class, 'dashboard'])
     ->name('dashboard');
 Route::get('my-game', [DashboardController::class, 'myGame'])
     ->name('mygame');
+Route::get('bonus', [DashboardController::class, 'bonus'])
+    ->name('bonus');
+Route::get('settings', [DashboardController::class, 'settings'])
+    ->name('settings');
 Route::get('logout', [DashboardController::class, 'logout'])
     ->name('logout');
 Route::get('/register', [FrontController::class, 'register'])
@@ -48,6 +52,8 @@ Route::match(['POST','GET'],'/check_register', [FrontController::class, 'check_r
 Route::group(['prefix' => 'admin', 'as' => 'admin.','middleware' => ['isAdmin']], function () {
     Route::match(["POST", "GET"], '/lotto_fixture_list', [BackendController::class, 'lotto_fixture_list'])
         ->name('lotto_fixture_list');
+    Route::match(["POST", "GET"], '/partipates', [BackendController::class, 'partipates'])
+        ->name('partipates');
     Route::match(["POST", "GET"], '/result/{id}', [BackendController::class, 'result'])
         ->name('result');
     Route::match(["POST", "GET"], '/winner_detail/{id}', [BackendController::class, 'winner_detail'])

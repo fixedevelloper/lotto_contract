@@ -7,12 +7,12 @@
                                         <i class="icon-pcontact"></i>
                                     </span>
                     <span>
-                                       Contact Preferences
+                                       Dashboard
                                     </span>
                 </a>
             </li>
             <li>
-                <a href="dashboard.html" @if($route=="account") class="active" @endif>
+                <a href="{{route("settings")}}" @if($route=="settings") class="active" @endif>
                                     <span class="icons">
                                         <i class="icon-user"></i>
                                     </span>
@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:void(0);">
+                <a href="{{route("bonus")}}" @if($route=="bonus") class="active" @endif>
                                     <span class="icons">
                                         <i class="icon-bonus"></i>
                                     </span>

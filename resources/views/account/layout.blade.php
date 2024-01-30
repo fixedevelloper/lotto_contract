@@ -78,7 +78,9 @@
             <script type="module" src="{{asset('contract/main.js')}}"></script>
             <script src="{{ asset('contract/lotterie.js') }}"></script>
             <script>
-
+                $('#myform_game_input').change(function () {
+                    $('#mygame_form').submit()
+                })
                 var configs = {
                     routes: {
                         index: "{{\Illuminate\Support\Facades\URL::to('/')}}",

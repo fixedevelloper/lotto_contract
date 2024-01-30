@@ -1,9 +1,10 @@
 @extends('backend.backend')
 @section('title') Looto resultats @endsection
 @section('content')
-    <div class="container">
-        <h3 class="mt-3 text-white">Grille de match  {{$lotto->title}} du {{\Carbon\Carbon::parse($lotto->end_time)->format("d/m/Y")}}</h3>
-    </div>
+    <h3 class="account__head mb__30">
+        Grille de match  {{$lotto->title}} du {{\Carbon\Carbon::parse($lotto->end_time)->format("d/m/Y")}}
+    </h3>
+
     <div class="card card_dark mt-3">
         <div class="card-body">
             <table class="table text-white">

@@ -1,7 +1,9 @@
 @extends('backend.backend')
 @section('title') detail winner @endsection
 @section('content')
-
+    <h3 class="account__head mb__30">
+        Detail winner
+    </h3>
     <div class="card card_dark mt-3">
         <div class="card-body">
             <table class="table text-white">

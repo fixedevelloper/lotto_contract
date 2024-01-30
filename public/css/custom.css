@@ -4,6 +4,16 @@
     font-weight: 800;
 
 }
+.dashboard__body__wrap .account__head::before {
+    position: absolute;
+    content: "";
+    background-color: var(--slidebox);
+    height: 72px;
+    right: 0;
+    top: 97px;
+    width: 0 !important;
+    z-index: -1;
+}
 .main__table .table > :not(caption) > * > * {
     padding: .5rem .5rem;
     background-color: var(--bs-table-bg);

@@ -1,6 +1,17 @@
 @extends('account.layout')
 
 @section('content')
+  {{--  <h3 class="account__head mb__30">
+        My Game
+    </h3>--}}
+    <div class="promocode__wrap">
+        <h3>
+            My Game
+        </h3>
+        <form id="mygame_form">
+            <input class="text-white" type="date" value="{{$date}}" name="date" id="myform_game_input">
+        </form>
+    </div>
     <div class="accordion mt-3" id="accordionExample">
         @foreach($mygames as $item)
     <div class="accordion-item">

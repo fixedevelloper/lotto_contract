@@ -11,16 +11,7 @@
                                     </span>
                 </a>
             </li>
-            <li>
-                <a href="dashboard.html" @if($route=="account") class="active" @endif>
-                                    <span class="icons">
-                                        <i class="icon-user"></i>
-                                    </span>
-                    <span>
-                                        Account Settings
-                                    </span>
-                </a>
-            </li>
+
             <li>
                 <a href="{{route("admin.configuration")}}" @if($route=="configuration") class="active" @endif>
                                     <span class="icons">
@@ -32,9 +23,9 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:void(0);">
+                <a href="{{route("admin.partipates")}}" @if($route=="partipates") class="active" @endif>
                                     <span class="icons">
-                                        <i class="icon-bonus"></i>
+                                        <i class="icon-user"></i>
                                     </span>
                     <span>
                                        List participates
@@ -42,7 +33,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route("logout")}}">
+                <a href="{{route("logout")}}" >
                                     <span class="icons">
                                         <i class="icon-logout"></i>
                                     </span>
