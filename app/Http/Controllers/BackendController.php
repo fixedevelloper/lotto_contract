@@ -73,11 +73,11 @@ class BackendController extends Controller
             $lists = PlayingFixture::query()->where(['game_play_id' => $game->id])->get();
             foreach ($lists as $list) {
                 $fixture = Fixture::query()->firstWhere(['fixture_id' => $list->lotto_fixture_item->fixture_id]);
-                if ($fixture->team_home_winner && $list->value == 1) {
+                if ($fixture->score_ft_home>$fixture->score_ft_away && $list->value == 1) {
                     $count++;
-                } elseif ($fixture->team_away_winner && $list->value == 2) {
+                } elseif ($fixture->score_ft_home<$fixture->score_ft_away && $list->value == 2) {
                     $count++;
-                } elseif (!$fixture->team_home_winner && !$fixture->team_away_winner && $list->value == 3) {
+                } elseif ($fixture->score_ft_home==$fixture->score_ft_away && $list->value == 3) {
                     $count++;
                 }
             }
@@ -121,11 +121,11 @@ class BackendController extends Controller
             $lists = PlayingFixture::query()->where(['game_play_id' => $game->id])->get();
             foreach ($lists as $list) {
                 $fixture = Fixture::query()->firstWhere(['fixture_id' => $list->lotto_fixture_item->fixture_id]);
-                if ($fixture->team_home_winner && $list->value == 1) {
+                if ($fixture->score_ft_home>$fixture->score_ft_away && $list->value == 1) {
                     $count++;
-                } elseif ($fixture->team_away_winner && $list->value == 2) {
+                } elseif ($fixture->score_ft_home<$fixture->score_ft_away && $list->value == 2) {
                     $count++;
-                } elseif (!$fixture->team_home_winner && !$fixture->team_away_winner && $list->value == 3) {
+                } elseif ($fixture->score_ft_home==$fixture->score_ft_away && $list->value == 3) {
                     $count++;
                 }
             }
