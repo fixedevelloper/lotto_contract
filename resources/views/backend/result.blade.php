@@ -46,9 +46,9 @@
                         </td>
                         <td>
                             @if($fixture->st_short !="NS")
-                                @if($fixture->team_home_winner)
+                                @if($fixture->score_ft_home>$fixture->score_ft_away)
                                     1
-                                @elseif($fixture->team_away_winner)
+                                @elseif($fixture->score_ft_home<$fixture->score_ft_away)
                                     2
                                 @else
                                     3

@@ -22,9 +22,9 @@
 
                          $team_home=\App\Helpers\Helpers::getTeamByID($fixture->team_home_id);
                          $team_away=\App\Helpers\Helpers::getTeamByID($fixture->team_away_id);
-                          if ($fixture->team_away_winner){
+                          if ($fixture->score_ft_home<$fixture->score_ft_away){
                               $result=2;
-                          }elseif ($fixture->team_home_winner){
+                          }elseif ($fixture->score_ft_home>$fixture->score_ft_away){
                                $result=1;
                           }else{
                                $result=3;
