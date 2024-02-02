@@ -81,7 +81,7 @@ class FrontController extends Controller
     }
     public function register(Request $request){
         $isLogged=false;
-        $id= $request->get("id");
+        $id= $request->get("txd");
         return view('register', [
             "id"=>$id,
         ]);

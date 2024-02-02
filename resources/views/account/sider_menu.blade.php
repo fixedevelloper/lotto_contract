@@ -2,6 +2,11 @@
     <div class="dashboard__side__bar">
         <ul class="account__menu">
             <li>
+                <a>
+                    <span>Cagnote: <span id="cagnote"></span></span>
+                </a>
+            </li>
+            <li>
                 <a href="{{route("dashboard")}}"  @if($route=="dashboard") class="active" @endif>
                                     <span class="icons">
                                         <i class="icon-pcontact"></i>

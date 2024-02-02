@@ -91,7 +91,10 @@
                         check_register: "{{\Illuminate\Support\Facades\URL::route('check_register')}}",
                     }
                 }
-
+                jQuery(document).ready(function() {
+                    'use strict';
+                  lotto.setBalance();
+                });
             </script>
 @stack('script')
 </body>

@@ -16,9 +16,12 @@ class DashboardController extends Controller
 
     public function dashboard(Request $request)
     {
+        $id=Session::get("id_connect");
+        $user=User::query()->find($id);
         $address=Session::get("address_connect");
         return view('account.dashboard', [
             "address"=>$address,
+            "id"=>$id,
             'route'=>"dashboard"
         ]);
     }

@@ -25,13 +25,18 @@ var lotto = function () {
             data: {
                 'balance':convertDiv(balance)
                 //'balance':balance
-    },
+            },
             success: function (data) {
             },
             error: function (err) {
             }
         });
         return balance;
+    };
+    const setBalance= async function(){
+
+        var balance = await web3.eth.getBalance("0x9807872ed06f28966cdac161a8d21a5b1bae00a3")
+    $('#cagnote').text(convertDiv(balance))
     };
     const initialiseEtheruim = async function () {
         if (window.ethereum) {
@@ -320,7 +325,8 @@ var lotto = function () {
         login,
         getBalance,
         sendLottery,
-        sendPayement
+        sendPayement,
+        setBalance
     }
 }();
 jQuery(document).ready(function() {
