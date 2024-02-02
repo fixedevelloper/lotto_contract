@@ -92,8 +92,8 @@
 
                                 <a href="{{route('game',["id"=>$lotto_fixture->id])}}">
                                     <li style="--i: {{$loop->index}}">
-                                    <h3>{{$lotto_fixture->title}} du {{\Carbon\Carbon::parse($lotto_fixture->end_time)->format("d/m/Y")}}</h3>
-                                    <p class="text-black-50">Fin de validation : {{$lotto_fixture->end_time}}</p>
+                                    <h3>{{$lotto_fixture->title}} of {{\Carbon\Carbon::parse($lotto_fixture->end_time)->format("d/m/Y")}}</h3>
+                                    <p class="text-black-50">End of validation : {{$lotto_fixture->end_time}}</p>
                                     </li>
                                 </a>
                             @endforeach

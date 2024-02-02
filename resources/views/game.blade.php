@@ -8,14 +8,14 @@
             <div class="card-body text-center">
        <h2 class="text-white text-center">Lotto N°{{$lotto->id}}
            @if($is_then)
-               <span class="text-danger text-opacity-100">Fermé</span>
+               <span class="text-danger text-opacity-100">closed</span>
            @endif</h2>
 
-                <h2 class="text-white text-center text-uppercase">{{$lotto->title}} du {{\Carbon\Carbon::parse($lotto->end_time)->format("d/m/Y")}}</h2>
-                <h6>Fin de validation : <span>{{$lotto->end_time }}</span></h6>
+                <h2 class="text-white text-center text-uppercase">{{$lotto->title}} of {{\Carbon\Carbon::parse($lotto->end_time)->format("d/m/Y")}}</h2>
+                <h6>End of validation : <span>{{$lotto->end_time }}</span></h6>
                 <div class="mt-3">
                     @if($is_then)
-                        <a class="btn btn-outline-danger btn-lg btn-block" href="{{route("resultat",['id'=>$lotto->id])}}"> Resultats</a>
+                        <a class="btn btn-outline-danger btn-lg btn-block" href="{{route("resultat",['id'=>$lotto->id])}}"> Results</a>
                    @endif
                 </div>
                 {{--<h6>Fin de validation dans : <span  class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($lotto->end_time)->format('Y/m/d h:i:s') }}"></span></h6>--}}
@@ -94,9 +94,9 @@
                     </div>
                     <div class="d-grid gap-2 mt-3">
                         @if($is_then)
-                            <a class="btn btn-outline-primary btn-lg btn-block" href="{{route("resultat",['id'=>$lotto->id])}}"> Resultats</a>
+                            <a class="btn btn-outline-primary btn-lg btn-block" href="{{route("resultat",['id'=>$lotto->id])}}"> Results</a>
                         @else
-                            <a class="btn btn-outline-success btn-lg btn-block" id="send_conbinaiso" onclick="lotto.sendLottery()"><i class="fa fa-spinner fa-spin" id="spinner_send"></i> Valider</a>
+                            <a class="btn btn-outline-success btn-lg btn-block" id="send_conbinaiso" onclick="lotto.sendLottery()"><i class="fa fa-spinner fa-spin" id="spinner_send"></i> Send</a>
                         @endif
                     </div>
                 </div>

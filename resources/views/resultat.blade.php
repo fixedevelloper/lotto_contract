@@ -5,13 +5,13 @@
     <div class="row mt-3">
         <div class="card card_dark text-white">
             <div class="card-body text-center">
-       <h2 class="text-white text-center">Resultat Lotto N°{{$lotto->id}}
+       <h2 class="text-white text-center">Result Lotto N°{{$lotto->id}}
            @if($is_then)
-               <span class="text-danger text-opacity-100">Fermé</span>
+               <span class="text-danger text-opacity-100">Closed</span>
            @endif</h2>
 
-                <h2 class="text-white text-center text-uppercase">{{$lotto->title}} du {{\Carbon\Carbon::parse($lotto->end_time)->format("d/m/Y")}}</h2>
-                <h6>Fin de validation : <span>{{$lotto->end_time }}</span></h6>
+                <h2 class="text-white text-center text-uppercase">{{$lotto->title}} of {{\Carbon\Carbon::parse($lotto->end_time)->format("d/m/Y")}}</h2>
+                <h6>End of validation : <span>{{$lotto->end_time }}</span></h6>
            </div>
         </div>
 </div>

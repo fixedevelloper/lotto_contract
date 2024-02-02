@@ -10,8 +10,8 @@
     <!-- Sites meta Data -->
     <meta name="application-name"
           content="Lotto foot - Crypto, BitCoin, Etheruim">
-    <meta name="author" content="Propulse4U">
-    <meta name="keywords" content="Propulse4U- Propulse4U, Propulse4U, Propulse4U">
+    <meta name="author" content="Rodrigue julio">
+    <meta name="keywords" content="Lotto- paris, game, Propulse4U">
     <meta name="description"
           content="">
 
@@ -19,7 +19,7 @@
     <meta property="og:title"
           content="">
     <meta property="og:site_name" content=Propulse4U>
-    <meta property="og:url" content="https://Propulse4U.com/">
+    <meta property="og:url" content="https://4ulotto.com/">
     <meta property="og:description"
           content="Welcome to Infinix,">
     <meta property="og:type" content="website">
