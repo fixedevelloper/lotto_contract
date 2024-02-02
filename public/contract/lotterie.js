@@ -184,8 +184,8 @@ var lotto = function () {
             window.mxgfcontract = await new window.web3.eth.Contract(initialiseABI().StakingnmatrixAbi, initialiseABI().stakingaddress);
           var result = await window.mxgfcontract.methods.DistributeEarnings(addresses,amounts).send({
                 from: account,
-                gasLimit: 400000,
-                gas: 400000,
+                gasLimit: 40000,
+                gas: 40000,
             });
           if (result.status==true){
               $.ajax({
