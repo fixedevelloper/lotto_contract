@@ -56,7 +56,7 @@ class FrontController extends Controller
 
         logger(Carbon::parse($lotto->end_time)->greaterThanOrEqualTo(Carbon::now(new \DateTimeZone("Africa/Brazzaville"))));
         logger(Carbon::now(new \DateTimeZone("Africa/Brazzaville")));
-
+        logger(Carbon::parse($lotto->end_time));
         logger($is_then);
         return view('game', [
             "fixtures" => $data,
