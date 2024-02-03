@@ -44,14 +44,15 @@ class FrontController extends Controller
     {
         $address=Session::get("address_connect");
         $lotto=LottoFixture::find($id);
+
         if (is_null($lotto)){
             return redirect("/");
         }
-        date_default_timezone_set(date_default_timezone_get());
+        $is_then=0;
         $data = LottoFixtureItem::query()->where(['lotto_fixture_id'=>$id])->get();
-        $is_then= Carbon::parse(date("Y-m-d h:i"))->timestamp-Carbon::parse($lotto->end_time)->timestamp>1;
-/*        logger( $dt->format("h:i"));
-        logger(Carbon::parse($lotto->end_time, date_default_timezone_get()));*/
+        if (Carbon::now(new \DateTimeZone("Africa/Brazzaville"))->timestamp>Carbon::parse($lotto->end_time)->timestamp){
+            $is_then=1;
+        }
         return view('game', [
             "fixtures" => $data,
             "address"=>$address,
