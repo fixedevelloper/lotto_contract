@@ -50,14 +50,22 @@ class FrontController extends Controller
         }
         $is_then=0;
         $data = LottoFixtureItem::query()->where(['lotto_fixture_id'=>$id])->get();
-        if (Carbon::parse($lotto->end_time)->greaterThanOrEqualTo(Carbon::now(new \DateTimeZone("Africa/Brazzaville")))){
+        $now=new DateTime('now',new \DateTimeZone("Africa/Brazzaville"));
+        $interval=new DateTime($lotto->end_time);
+        logger( $now->format("Y-m-d h:i"));
+        logger( $interval->format("Y-m-d h:i"));
+        if ($now->format("Y-m-d h:i")>$interval->format("Y-m-d h:i")){
+            $is_then=1;
+        }
+        logger($is_then);
+/*        if (Carbon::parse($lotto->end_time)->greaterThanOrEqualTo(Carbon::now(new \DateTimeZone("Africa/Brazzaville")))){
             $is_then=1;
         }
 
         logger(Carbon::parse($lotto->end_time)->greaterThanOrEqualTo(Carbon::now(new \DateTimeZone("Africa/Brazzaville"))));
         logger(Carbon::now(new \DateTimeZone("Africa/Brazzaville")));
         logger(Carbon::parse($lotto->end_time));
-        logger($is_then);
+        logger($is_then);*/
         return view('game', [
             "fixtures" => $data,
             "address"=>$address,
