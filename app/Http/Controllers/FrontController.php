@@ -53,6 +53,13 @@ class FrontController extends Controller
         if (Carbon::now(new \DateTimeZone("Africa/Brazzaville"))->timestamp>Carbon::parse($lotto->end_time)->timestamp){
             $is_then=1;
         }
+
+
+        logger(Carbon::parse($lotto->end_time)->timestamp);
+        logger(Carbon::now(new \DateTimeZone("Africa/Brazzaville"))->timestamp);
+        logger($is_then);
+        /*        logger( $dt->format("h:i"));
+        logger(Carbon::parse($lotto->end_time, date_default_timezone_get()));*/
         return view('game', [
             "fixtures" => $data,
             "address"=>$address,
